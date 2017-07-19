@@ -1,0 +1,13 @@
+<div>
+  <div>
+    <input type="text" [(ngModel)]="taskTitle" />
+    <button (click)="addTask()">Add</button>
+  </div>
+  <div>
+    <div *ngFor="let task of tasks">
+      <input type="checkbox" name="task_check_{{ task.id }}"/>
+      <span>{{ task.title }}</span>
+      <span>{{ task.status }}</span>
+    </div>
+  </div>
+</div>

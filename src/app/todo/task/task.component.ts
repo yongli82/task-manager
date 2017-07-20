@@ -17,8 +17,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.groupId = 1;
-    this.tasks = this.service.fetchTasks(this.groupId);
+    this.showTasksInGroup(1);
   }
 
   addTask(): void {
@@ -29,6 +28,11 @@ export class TaskComponent implements OnInit {
       status: 1
     }
     this.service.addTask(task)
+  }
+
+  showTasksInGroup(groupId: number): void {
+    this.groupId = groupId;
+    this.tasks = this.service.fetchTasks(this.groupId);
   }
 
 }

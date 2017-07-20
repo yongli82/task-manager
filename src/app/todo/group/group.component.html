@@ -1,9 +1,11 @@
 <div>
   <div>
-
-    <div *ngFor="let group of groups">
-      <span>[{{ group.id }}]</span> &nbsp; <span>{{ group.name }}</span>
-    </div>
+    <ul class="list-group">
+    <li *ngFor="let group of groups" class="list-group-item">
+      <span class="badge">{{ group.id }}</span>
+      <span class="glyphicon glyphicon-th-list"></span><span>{{ group.name }}</span>
+    </li>
+    </ul>
   </div>
 </div>
 

@@ -1,13 +1,27 @@
-<div>
-  <div>
-    <input type="text" [(ngModel)]="taskTitle" />
-    <button (click)="addTask()">Add</button>
-  </div>
-  <div>
-    <div *ngFor="let task of tasks">
-      <input type="checkbox" name="task_check_{{ task.id }}"/>
-      <span>{{ task.title }}</span>
-      <span>{{ task.status }}</span>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="well well-lg">
+            <input type="text" [(ngModel)]="taskTitle"/>
+            <button (click)="addTask()">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li *ngFor="let task of tasks" class="list-group-item">
+              <input type="checkbox" name="task_check_{{ task.id }}"/>
+              <span>{{ task.title }}</span>
+              <span>{{ task.status }}</span>
+              <span class="badge"><span class="glyphicon glyphicon-star-empty"></span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>

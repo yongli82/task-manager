@@ -10,10 +10,16 @@ import {Group} from './group.model';
 })
 export class GroupComponent implements OnInit {
   groups: Group[] = [];
+  currentGroupId: number;
+
   constructor(private service: GroupService) { }
 
   ngOnInit() {
     this.groups = this.service.fetchGroups();
   }
 
+  selectGroup(): void {
+    this.currentGroupId;
+
+  }
 }

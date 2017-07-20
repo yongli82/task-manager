@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, ElementRef} from '@angular/core';
 import {Task} from './task.model'
 import {TaskService} from './task.service';
 
@@ -10,8 +10,10 @@ import {TaskService} from './task.service';
 })
 export class TaskComponent implements OnInit {
   tasks: Task[] = [];
-  groupId: number;
+  @Input() groupId: number;
   taskTitle: string;
+
+  @Output() taskNumber = new EventEmitter<number>();
 
   constructor(private service: TaskService) {
   }
@@ -27,7 +29,9 @@ export class TaskComponent implements OnInit {
       groupId: this.groupId,
       status: 1
     }
-    this.service.addTask(task)
+    this.service.addTask(task);
+    // 任务数变更
+    this.taskNumber.emit(this.tasks.length)
   }
 
   showTasksInGroup(groupId: number): void {

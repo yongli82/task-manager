@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter, ElementRef} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, OnChanges} from '@angular/core';
 import {Task} from './task.model'
 import {TaskService} from './task.service';
 
@@ -8,7 +8,7 @@ import {TaskService} from './task.service';
   styleUrls: ['./task.component.css'],
   providers: [TaskService]
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit, OnChanges {
   tasks: Task[] = [];
   @Input() groupId: number;
   taskTitle: string;
@@ -19,7 +19,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showTasksInGroup(1);
+    this.showTasksInGroup(this.groupId);
   }
 
   addTask(): void {
@@ -37,6 +37,10 @@ export class TaskComponent implements OnInit {
   showTasksInGroup(groupId: number): void {
     this.groupId = groupId;
     this.tasks = this.service.fetchTasks(this.groupId);
+  }
+
+  ngOnChanges() {
+    this.showTasksInGroup(this.groupId);
   }
 
 }

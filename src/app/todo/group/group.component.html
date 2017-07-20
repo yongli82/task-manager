@@ -2,8 +2,10 @@
   <div>
     <ul class="list-group">
     <li *ngFor="let group of groups" class="list-group-item">
-      <span class="badge">{{ group.id }}</span>
+      <span (click)="selectGroup(group)">
       <span class="glyphicon glyphicon-th-list"></span><span>{{ group.name }}</span>
+      </span>
+      <span class="badge">{{ group.id }}</span>
     </li>
     </ul>
   </div>

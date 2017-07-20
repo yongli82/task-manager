@@ -9,10 +9,10 @@
   </div>
   <div class="row">
     <div class="col-md-2 col-md-offset-1">
-      <app-group></app-group>
+      <app-group (currentGroupId)="changeGroup($event)"></app-group>
     </div>
     <div class="col-md-9">
-      <app-task></app-task>
+      <app-task [groupId]="currentGroupId" (taskNumber)="changeTaskNum($event)"></app-task>
     </div>
   </div>
 </div>

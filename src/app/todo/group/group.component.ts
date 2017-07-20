@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {GroupService} from './group.service';
 import {Group} from './group.model';
 
@@ -10,16 +10,17 @@ import {Group} from './group.model';
 })
 export class GroupComponent implements OnInit {
   groups: Group[] = [];
-  currentGroupId: number;
+  @Output() currentGroupId = new EventEmitter<number>();
 
-  constructor(private service: GroupService) { }
+  constructor(private service: GroupService) {
+  }
 
   ngOnInit() {
     this.groups = this.service.fetchGroups();
   }
 
-  selectGroup(): void {
-    this.currentGroupId;
-
+  selectGroup(group: Group): void {
+    console.log('group=', group.id);
+    this.currentGroupId.emit(group.id);
   }
 }
